@@ -15,12 +15,37 @@ const messageInput = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
 const messagesContainer = document.getElementById("messagesContainer");
 
+// Mobile menu handling
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
+
 let currentUser = null;
 let currentProfilePic = null;
 
+// Mobile menu toggle
+menuToggle.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+  sidebarOverlay.classList.toggle("active");
+});
+
+// Close sidebar when overlay is clicked
+sidebarOverlay.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+  sidebarOverlay.classList.remove("active");
+});
+
+// Close sidebar when clicking on a user (mobile only)
+document.addEventListener("click", (e) => {
+  if (window.innerWidth <= 640 && e.target.closest(".user-item")) {
+    sidebar.classList.remove("open");
+    sidebarOverlay.classList.remove("active");
+  }
+});
+
 // Update preview as user types
 usernameInput.addEventListener("input", updatePreview);
-profilePicInput.addEventListener("input", updatePreview);
+profilePicInput.addEventListener("input", handleUrlInput);
 profilePicFileInput.addEventListener('change', handleFileInput);
 
 function handleUrlInput() {
@@ -113,7 +138,6 @@ function sendMessage() {
 
     messageInput.value = "";
     messageInput.style.height = "auto";
-
   }
 }
 
@@ -126,16 +150,18 @@ socket.on('disconnect', () => {
   console.log('Disconnected from server');
 });
 
+// Listen for message history
+socket.on('message history', (messages) => {
+  console.log('Received message history:', messages);
+  messages.forEach(msg => {
+    addMessage(msg.username, msg.message, msg.timestamp, msg.profilePic);
+  });
+});
+
 // Listen for chat messages
 socket.on('chat message', (data) => {
   console.log('Received message:', data);
   addMessage(data.username, data.message, data.timestamp, data.profilePic);
-});
-
-socket.on('message history', (messages) => {
-  messages.forEach(msg => {
-    addMessage(msg.username, msg.message, msg.timestamp, msg.profilePic);
-  });
 });
 
 // Listen for user list updates
@@ -153,7 +179,6 @@ socket.on('user joined', (username) => {
 socket.on('user left', (username) => {
   console.log('User left:', username);
 });
-
 
 function addMessage(username, message, timestamp, profilePic = null) {
   const messageElement = document.createElement("div");
@@ -185,7 +210,6 @@ function addMessage(username, message, timestamp, profilePic = null) {
 }
 
 function addUser(username, profilePic = null) {
-
   const existingUser = document.querySelector(`[data-username="${username}"]`);
   if(existingUser) return;
 
@@ -236,5 +260,5 @@ function updateOnlineCount() {
   const count = document.querySelectorAll(".user-item").length;
   document.getElementById("onlineCount").textContent = `${count} online user${
     count !== 1 ? "s" : ""
-  } `;
+  }`;
 }
