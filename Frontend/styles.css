@@ -94,6 +94,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: #1a1a1a;
+    overflow: hidden;
 }
 
 .join-btn {
@@ -113,6 +114,52 @@ body {
     transform: translateY(-2px);
 }
 
+/* Social Links Styles */
+.social-links {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.social-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffd700;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    color: #1a1a1a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
 /* Chat Page Styles */
 .chat-container {
     display: none;
@@ -127,12 +174,34 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .chat-header h1 {
     background: linear-gradient(45deg, #ffd700, #ffed4e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     font-size: 1.5rem;
+}
+
+.social-icons-header {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon-small {
+    width: 38px;
+    height: 38px;
+}
+
+.social-icon-small svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
 }
 
 .chat-main {
@@ -197,6 +266,7 @@ body {
     color: #1a1a1a;
     margin-right: 12px;
     font-size: 16px;
+    overflow: hidden;
 }
 
 .user-info h4 {
@@ -244,6 +314,7 @@ body {
     color: #1a1a1a;
     font-size: 14px;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .message-content {
@@ -367,6 +438,10 @@ body {
     .login-card {
         margin: 20px;
         padding: 30px;
+    }
+    
+    .social-icons-header {
+        display: none;
     }
 }
 

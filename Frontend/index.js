@@ -132,6 +132,12 @@ socket.on('chat message', (data) => {
   addMessage(data.username, data.message, data.timestamp, data.profilePic);
 });
 
+socket.on('message history', (messages) => {
+  messages.forEach(msg => {
+    addMessage(msg.username, msg.message, msg.timestamp, msg.profilePic);
+  });
+});
+
 // Listen for user list updates
 socket.on('user list', (users) => {
   console.log('User list updated:', users);
