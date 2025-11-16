@@ -1,16 +1,19 @@
-# GlowChat
+# 💬 GlowChat 
 
 A real-time chat application built with Node.js, Socket.IO, and vanilla JavaScript.
 
 ## Features
-
 - Real-time messaging between multiple users
 - Live user list showing who's online
+- Custom profile pictures (URL or file upload)
 - Auto-resizing message input
 - Responsive design with mobile support
 - Modern glassmorphism UI with gradient backgrounds
 - Message timestamps
 - Smooth animations and transitions
+- Message history for users joining mid-conversation
+- Auto-clear messages when chat room becomes empty
+- Built with Socket.IO and WebSockets
 
 ## Tech Stack
 
@@ -23,7 +26,6 @@ A real-time chat application built with Node.js, Socket.IO, and vanilla JavaScri
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd glowchat
 ```
 
 2. Navigate to the Backend directory:
@@ -62,10 +64,10 @@ MIT License - feel free to use this project for learning or as a base for your o
 ## 🤝 Contributing  
 Open to pull requests for any contribution
 
-
 My Socials:
-- GitHub: [github.com/hamood268](https://github.com/hamood268)
-- Discord: [@ha268h](https://discord.com/users/804230882693087242)
-- Support me: [paypal](https://paypal.me/Mohammed0268)
+- [GitHub](https://github.com/hamood268)
+- [Discord: @ha268h](https://discord.com/users/804230882693087242)
+
+ [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/Mohammed0268)
 
 *Developed with passion by Mohammed*
